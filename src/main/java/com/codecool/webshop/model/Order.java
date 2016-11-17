@@ -13,10 +13,6 @@ public class Order {
 
     private int sumAmount;
 
-    private String customerName;
-
-    private String customerAddress;
-
     private enum Payment {
         CARD, CASH, PAYPAL
     }
@@ -36,18 +32,11 @@ public class Order {
         this.sumAmount = sumAmount;
     }
 
-    public Order(String customerName, String customerAddress) {
-        this.customerName = customerName;
-        this.customerAddress = customerAddress;
-    }
-
-    public Order(int id, List<Product> products, Payment paymentMethod, int sumAmount, String customerName, String customerAddress) {
+    public Order(int id, List<Product> products, Payment paymentMethod, int sumAmount) {
         this.id = id;
         this.products = products;
         this.paymentMethod = paymentMethod;
         this.sumAmount = sumAmount;
-        this.customerName = customerName;
-        this.customerAddress = customerAddress;
     }
 
     public int getId() {
@@ -82,22 +71,6 @@ public class Order {
         this.sumAmount = sumAmount;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
-
     @Override
     public java.lang.String toString() {
         return "Order{" +
@@ -105,8 +78,6 @@ public class Order {
                 ", products=" + products +
                 ", paymentMethod=" + paymentMethod +
                 ", sumAmount=" + sumAmount +
-                ", customerName=" + customerName +
-                ", customerAddress=" + customerAddress +
                 '}';
     }
 
