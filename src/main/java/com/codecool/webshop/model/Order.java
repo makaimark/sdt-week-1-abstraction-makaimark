@@ -5,70 +5,39 @@ import java.util.List;
 // TODO review what is really needed here.
 public class Order {
 
-    private int id;
+    private final int id;
 
-    private List<Product> products;
+    private final List<Product> products;
 
-    private Payment paymentMethod;
+    private final Payment paymentMethod;
 
-    private int sumAmount;
+    private final int sumAmount;
+
+    public Order(OrderBuilder orderBuilder) {
+        this.id = orderBuilder.id;
+        this.products = orderBuilder.products;
+        this.paymentMethod = orderBuilder.paymentMethod;
+        this.sumAmount = orderBuilder.sumAmount;
+    }
 
     private enum Payment {
         CARD, CASH, PAYPAL
-    }
-
-    public Order(int id) {
-        this.id = id;
-    }
-
-    public Order(int id, List<Product> products, Payment paymentMethod) {
-        this.id = id;
-        this.products = products;
-        this.paymentMethod = paymentMethod;
-    }
-
-    public Order(Payment paymentMethod, int sumAmount) {
-        this.paymentMethod = paymentMethod;
-        this.sumAmount = sumAmount;
-    }
-
-    public Order(int id, List<Product> products, Payment paymentMethod, int sumAmount) {
-        this.id = id;
-        this.products = products;
-        this.paymentMethod = paymentMethod;
-        this.sumAmount = sumAmount;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public List<Product> getProducts() {
         return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public Payment getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(Payment paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
     public int getSumAmount() {
         return sumAmount;
-    }
-
-    public void setSumAmount(int sumAmount) {
-        this.sumAmount = sumAmount;
     }
 
     @Override
@@ -79,6 +48,51 @@ public class Order {
                 ", paymentMethod=" + paymentMethod +
                 ", sumAmount=" + sumAmount +
                 '}';
+    }
+
+    public Order getOrder(int id, List<Product> products, Payment paymentMethod, int sumAmount) {
+        return new
+                Order.OrderBuilder()
+                .setId(id)
+                .setProducts(products)
+                .setPaymentmethod(paymentMethod)
+                .setSumamount(sumAmount)
+                .build();
+    }
+
+    public static class OrderBuilder {
+
+        private int id;
+
+        private List<Product> products;
+
+        private Order.Payment paymentMethod;
+
+        private int sumAmount;
+
+        public OrderBuilder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public OrderBuilder setProducts(List<Product> products) {
+            this.products = products;
+            return this;
+        }
+
+        public OrderBuilder setSumamount(int sumAmount) {
+            this.sumAmount = sumAmount;
+            return this;
+        }
+
+        public OrderBuilder setPaymentmethod(Payment paymentMethod) {
+            this.paymentMethod = paymentMethod;
+            return this;
+        }
+
+        public Order build() {
+            return new Order(this);
+        }
     }
 
 }
