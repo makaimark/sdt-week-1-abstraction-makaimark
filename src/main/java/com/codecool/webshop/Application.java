@@ -18,7 +18,11 @@ public class Application {
 
         // TODO #1, introduce error handling
         // create an error page, give back an errorCode and errorMessage
-        exception(Exception.class, (e, req, res) -> e.printStackTrace());
+        exception(Exception.class, (e, req, res) -> {
+            e.printStackTrace();
+            res.status(404);
+            res.body("Not found");
+        });
 
         port(8888);
 
