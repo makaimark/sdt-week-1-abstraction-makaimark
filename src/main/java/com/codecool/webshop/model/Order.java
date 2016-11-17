@@ -9,7 +9,7 @@ public class Order {
 
     private List<Product> products;
 
-    private String paymentMethod;
+    private Payment paymentMethod;
 
     private int sumAmount;
 
@@ -17,17 +17,21 @@ public class Order {
 
     private String customerAddress;
 
+    private enum Payment {
+        CARD, CASH, PAYPAL
+    }
+
     public Order(int id) {
         this.id = id;
     }
 
-    public Order(int id, List<Product> products, String paymentMethod) {
+    public Order(int id, List<Product> products, Payment paymentMethod) {
         this.id = id;
         this.products = products;
         this.paymentMethod = paymentMethod;
     }
 
-    public Order(String paymentMethod, int sumAmount) {
+    public Order(Payment paymentMethod, int sumAmount) {
         this.paymentMethod = paymentMethod;
         this.sumAmount = sumAmount;
     }
@@ -37,7 +41,7 @@ public class Order {
         this.customerAddress = customerAddress;
     }
 
-    public Order(int id, List<Product> products, String paymentMethod, int sumAmount, String customerName, String customerAddress) {
+    public Order(int id, List<Product> products, Payment paymentMethod, int sumAmount, String customerName, String customerAddress) {
         this.id = id;
         this.products = products;
         this.paymentMethod = paymentMethod;
@@ -62,11 +66,11 @@ public class Order {
         this.products = products;
     }
 
-    public String getPaymentMethod() {
+    public Payment getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(Payment paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
