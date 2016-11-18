@@ -50,16 +50,6 @@ public class Order {
                 '}';
     }
 
-    public Order getOrder(int id, List<Product> products, Payment paymentMethod, int sumAmount) {
-        return new
-                Order.OrderBuilder()
-                .setId(id)
-                .setProducts(products)
-                .setPaymentmethod(paymentMethod)
-                .setSumamount(sumAmount)
-                .build();
-    }
-
     public static class OrderBuilder {
 
         private int id;
@@ -70,22 +60,22 @@ public class Order {
 
         private int sumAmount;
 
-        public OrderBuilder setId(int id) {
+        public OrderBuilder id(int id) {
             this.id = id;
             return this;
         }
 
-        public OrderBuilder setProducts(List<Product> products) {
+        public OrderBuilder products(List<Product> products) {
             this.products = products;
             return this;
         }
 
-        public OrderBuilder setSumamount(int sumAmount) {
+        public OrderBuilder sumamount(int sumAmount) {
             this.sumAmount = sumAmount;
             return this;
         }
 
-        public OrderBuilder setPaymentmethod(Payment paymentMethod) {
+        public OrderBuilder paymentmethod(Payment paymentMethod) {
             this.paymentMethod = paymentMethod;
             return this;
         }

@@ -26,10 +26,9 @@ public class Application {
 
         port(8888);
 
-        OrderServiceImpl.getInstance().save(new Order(1));
-        OrderServiceImpl.getInstance().save(new Order(2));
-        Order o = new Order("customerName", "customerAddress");
-        o.setId(3);
+        OrderServiceImpl.getInstance().save(new Order.OrderBuilder().id(1).build());
+        OrderServiceImpl.getInstance().save(new Order.OrderBuilder().id(2).build());
+        Order o = new Order.OrderBuilder().build();
 
         OrderServiceImpl.getInstance().save(o);
 
