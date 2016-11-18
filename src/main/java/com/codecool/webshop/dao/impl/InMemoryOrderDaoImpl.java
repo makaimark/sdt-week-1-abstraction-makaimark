@@ -15,7 +15,11 @@ public class InMemoryOrderDaoImpl implements OrderDao {
     }
 
     public Order search(Order o){
-        // TODO implement
+        for ( Order order : DATA) {
+            if ( order.getId() == o.getId()) {
+                return order;
+            }
+        }
         return null;
     }
 

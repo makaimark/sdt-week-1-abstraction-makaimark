@@ -23,5 +23,11 @@ public class InMemoryProductDao implements ProductDao {
         return DATA;
     }
 
-    public Product search(Product p) { return  null;}
+    public Product search(Product p) {
+        for ( Product product : DATA) {
+            if ( product.getId() == p.getId()) {
+                return product;
+            }
+        }
+        return  null;}
 }
