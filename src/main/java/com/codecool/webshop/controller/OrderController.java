@@ -17,7 +17,6 @@ public class OrderController {
         OrderService orderService = OrderServiceImpl.getInstance();
 
         Map<String, List<Order>> params = new HashMap<>();
-        // TODO fix this error
         params.put("orders", orderService.list());
         return new ModelAndView(params, "order/index");
 

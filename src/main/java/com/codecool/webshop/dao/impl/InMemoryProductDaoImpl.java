@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by makaimark on 2016.11.17..
  */
-public class InMemoryProductDao implements ProductDao {
+public class InMemoryProductDaoImpl implements ProductDao {
 
     private static final List<Product> DATA = new ArrayList<>();
 
