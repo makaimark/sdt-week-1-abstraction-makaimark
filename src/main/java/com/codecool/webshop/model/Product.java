@@ -4,6 +4,14 @@ public class Product {
 
     private int id;
 
+    private String name;
+
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
     public String getName() {
         return name;
     }
@@ -13,13 +21,11 @@ public class Product {
         return id;
     }
 
-    private String name;
-
-    public int getPrice() {
-        return price;
+    public Product(int id, String name, int price) {
+        this.id=id;
+        this.name = name;
+        this.price = price;
     }
-
-    private int price;
 
     @Override
     public boolean equals(Object o) {
@@ -29,7 +35,6 @@ public class Product {
         Product product = (Product) o;
 
         return id == product.id;
-
     }
 
     @Override
