@@ -18,7 +18,7 @@ public class ProductDaoInJDBC implements ProductDao {
 
     @Override
     public void add(Product p) {
-        String query = "INSERT INTO todos (title, id, status) " +
+        String query = "INSERT INTO afternoonsession (id, name, price) " +
                 "VALUES ('" + p.getId() + "', '" + p.getName() + "', '" + p.getPrice() + "');";
         executeQuery(query);
     }
@@ -35,7 +35,7 @@ public class ProductDaoInJDBC implements ProductDao {
         ){
             while (resultSet.next()){
                 Product actTodo = new Product(resultSet.getInt("id"),
-                        resultSet.getString("title"),
+                        resultSet.getString("name"),
                         resultSet.getInt("price"));
                 resultList.add(actTodo);
             }
